@@ -1,0 +1,307 @@
+name: "SHUNet"
+input: "data"
+input_dim: 1
+input_dim: 3
+input_dim: 112
+input_dim: 92
+layer {
+  name: "conv1"
+  type: "Convolution"
+  bottom: "data"
+  top: "conv1"
+  convolution_param {
+    num_output: 8
+    kernel_size: 4
+    stride: 2
+  }
+}
+layer {
+  name: "ReLU1"
+  type: "ReLU"
+  bottom: "conv1"
+  top: "conv1_relu"
+}
+layer {
+  name: "conv1_1"
+  type: "Convolution"
+  bottom: "conv1_relu"
+  top: "conv1_1"
+  convolution_param {
+    num_output: 12
+    kernel_size: 1
+    stride: 1
+  }
+}
+layer {
+  name: "ReLU1_1"
+  type: "ReLU"
+  bottom: "conv1_1"
+  top: "conv1_1relu"
+}
+layer {
+  name: "conv1_2"
+  type: "Convolution"
+  bottom: "conv1_1relu"
+  top: "conv1_2"
+  convolution_param {
+    num_output: 12
+    kernel_size: 1
+    stride: 1
+  }
+}
+layer {
+  name: "ReLU1_2"
+  type: "ReLU"
+  bottom: "conv1_2"
+  top: "conv1_2relu"
+}
+layer {
+  name: "conv2"
+  type: "Convolution"
+  bottom: "conv1_2relu"
+  top: "conv2"
+  convolution_param {
+    num_output: 16
+    kernel_size: 3
+    stride: 2
+  }
+}
+layer {
+  name: "ReLU2"
+  type: "ReLU"
+  bottom: "conv2"
+  top: "conv2_relu"
+}
+layer {
+  name: "conv2_1"
+  type: "Convolution"
+  bottom: "conv2_relu"
+  top: "conv2_1"
+  convolution_param {
+    num_output: 20
+    kernel_size: 1
+    stride: 1
+  }
+}
+layer {
+  name: "ReLU2_1"
+  type: "ReLU"
+  bottom: "conv2_1"
+  top: "conv2_1relu"
+}
+layer {
+  name: "conv2_2"
+  type: "Convolution"
+  bottom: "conv2_1relu"
+  top: "conv2_2"
+  convolution_param {
+    num_output: 20
+    kernel_size: 1
+    stride: 1
+  }
+}
+layer {
+  name: "ReLU2_2"
+  type: "ReLU"
+  bottom: "conv2_2"
+  top: "conv2_2relu"
+}
+layer {
+  name: "conv3"
+  type: "Convolution"
+  bottom: "conv2_2relu"
+  top: "conv3"
+  convolution_param {
+    num_output: 24
+    kernel_size: 3
+    stride: 2
+    pad_w: 1
+  }
+}
+layer {
+  name: "ReLU3"
+  type: "ReLU"
+  bottom: "conv3"
+  top: "conv3_relu"
+}
+layer {
+  name: "conv3_1"
+  type: "Convolution"
+  bottom: "conv3_relu"
+  top: "conv3_1"
+  convolution_param {
+    num_output: 28
+    kernel_size: 1
+    stride: 1
+  }
+}
+layer {
+  name: "ReLU3_1"
+  type: "ReLU"
+  bottom: "conv3_1"
+  top: "conv3_1relu"
+}
+layer {
+  name: "conv3_2"
+  type: "Convolution"
+  bottom: "conv3_1relu"
+  top: "conv3_2"
+  convolution_param {
+    num_output: 28
+    kernel_size: 1
+    stride: 1
+  }
+}
+layer {
+  name: "ReLU3_2"
+  type: "ReLU"
+  bottom: "conv3_2"
+  top: "conv3_2relu"
+}
+
+layer {
+  name: "conv4"
+  type: "Convolution"
+  bottom: "conv3_2relu"
+  top: "conv4"
+  convolution_param {
+    num_output: 32
+    kernel_size: 3
+    stride: 2
+  }
+}
+layer {
+  name: "ReLU4"
+  type: "ReLU"
+  bottom: "conv4"
+  top: "conv4_relu"
+}
+layer {
+  name: "conv4_1"
+  type: "Convolution"
+  bottom: "conv4_relu"
+  top: "conv4_1"
+  convolution_param {
+    num_output: 36
+    kernel_size: 1
+    stride: 1
+  }
+}
+layer {
+  name: "ReLU4_1"
+  type: "ReLU"
+  bottom: "conv4_1"
+  top: "conv4_1relu"
+}
+layer {
+  name: "conv4_2"
+  type: "Convolution"
+  bottom: "conv4_1relu"
+  top: "conv4_2"
+  convolution_param {
+    num_output: 36
+    kernel_size: 1
+    stride: 1
+  }
+}
+
+layer {
+  name: "ReLU4_2"
+  type: "ReLU"
+  bottom: "conv4_2"
+  top: "conv4_2relu"
+}
+layer {
+  name: "conv5"
+  type: "Convolution"
+  bottom: "conv4_2relu"
+  top: "conv5"
+  convolution_param {
+    num_output: 40
+    kernel_size: 2
+    stride: 1
+  }
+}
+layer {
+  name: "ReLU5"
+  type: "ReLU"
+  bottom: "conv5"
+  top: "conv5_relu"
+}
+layer {
+  name: "conv6"
+  type: "Convolution"
+  bottom: "conv5_relu"
+  top: "conv6"
+  convolution_param {
+    num_output: 48
+    kernel_size: 2
+    stride: 1
+  }
+}
+layer {
+  name: "ReLU6"
+  type: "ReLU"
+  bottom: "conv6"
+  top: "conv6_relu"
+}
+layer {
+  name: "fc1_1"
+  type: "InnerProduct"
+  bottom: "conv6_relu"
+  top: "fc1_1"
+  inner_product_param {
+    num_output: 2
+  }
+}
+layer {
+  name: "gender_prob"
+  type: "Softmax"
+  bottom: "fc1_1"
+  top: "gender_prob"
+}
+layer {
+  name: "fc1_2"
+  type: "InnerProduct"
+  bottom: "conv6_relu"
+  top: "fc1_2"
+  inner_product_param {
+    num_output: 2
+  }
+}
+layer {
+  name: "glasses_prob"
+  type: "Softmax"
+  bottom: "fc1_2"
+  top: "glasses_prob"
+}
+layer {
+  name: "fc1_3"
+  type: "InnerProduct"
+  bottom: "conv6_relu"
+  top: "fc1_3"
+  inner_product_param {
+    num_output: 2
+  }
+}
+layer {
+  name: "hat_prob"
+  type: "Softmax"
+  bottom: "fc1_3"
+  top: "hat_prob"
+}
+layer {
+  name: "fc1_4"
+  type: "InnerProduct"
+  bottom: "conv6_relu"
+  top: "fc1_4"
+  inner_product_param {
+    num_output: 2
+  }
+}
+layer {
+  name: "mask_prob"
+  type: "Softmax"
+  bottom: "fc1_4"
+  top: "mask_prob"
+}
